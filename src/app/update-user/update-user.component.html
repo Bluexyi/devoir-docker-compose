@@ -1,0 +1,92 @@
+<div class="containerComponent">
+  <h2>Modification de {{user.pseudo}}</h2>
+  <div *ngIf="user" class="contForm">
+      <form [formGroup]="updateUserForm" (ngSubmit)="onSubmit()" class="example-form"  enctype="multipart/form-data">
+        <div class="inputForm">
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nom d'utilisateur *" type="text" formControlName="pseudo" value="{{user.pseudo}}">
+            <mat-error *ngIf="updateUserForm.controls['pseudo'].hasError('required')">
+              Le nom d'utilsateur est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['pseudo'].hasError('minlength')">
+              Le nom d'utilsateur est <strong>trop petit</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['pseudo'].hasError('maxlength')">
+              Le nom d'utilsateur est <strong>trop long</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [matDatepicker]="picker" placeholder="Date de naissance *" formControlName="birthDate" value="{{user.birthDate}}">
+            <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="updateUserForm.controls['birthDate'].hasError('required')">
+              La date de naissance est <strong>obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Mot de passe *" type="password" formControlName="password" value="{{user.password}}">
+            <mat-error *ngIf="updateUserForm.controls['password'].hasError('required')">
+              Le mot de passe est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['password'].hasError('minlength')">
+              Le mot de passe est <strong>trop petit</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['password'].hasError('maxlength')">
+              Le mot de passe est <strong>trop long</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Description" type="text" formControlName="description" value="{{user.description}}"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Numéro de voie *" type="text" formControlName="wayNumber" value="{{user.wayNumber}}">
+            <mat-error *ngIf="updateUserForm.controls['wayNumber'].hasError('required')">
+              Le numéro de voie est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['wayNumber'].hasError('maxlength')">
+              Le numéro de voie est <strong>trop long</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Nom de la voie *" type="text" formControlName="street" value="{{user.street}}">
+            <mat-error *ngIf="updateUserForm.controls['street'].hasError('required')">
+              Le nom de voie est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['street'].hasError('minlength')">
+              Le nom de voie est <strong>trop petit</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Code postal *" type="text" formControlName="zipCode" value="{{user.zipCode}}" (keyup)="getCity(updateUserForm.get('zipCode').value)">
+            <mat-error *ngIf="updateUserForm.controls['zipCode'].hasError('required')">
+              Le code postal est <strong>obligatoire</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['zipCode'].hasError('minlength')">
+              Le code postal est <strong>trop petit</strong>
+            </mat-error>
+            <mat-error *ngIf="updateUserForm.controls['zipCode'].hasError('maxlength')">
+              Le code postal est <strong>trop long</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Ville *" type="text" formControlName="city">
+              <mat-option *ngFor="let city of listCity" [value]="city.nom">{{city.nom}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="updateUserForm.controls['city'].hasError('required') && updateUserForm.controls['city'].hasError('minlenght')">
+              La ville est <strong>obligatoire</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <!--  <button (click)="test()">test</button> -->
+        <button mat-button type="submit">Valider</button>
+      </form>
+    </div>
+  <a routerLink="/list-user">Retourner à la liste des utilisateurs</a><br>
+</div>

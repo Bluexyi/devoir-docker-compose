@@ -1,0 +1,30 @@
+<div class="containerComponent">
+  <h2>Detail de {{user.pseudo}} </h2>
+  <div *ngIf="user" class="containerDetails">
+    <div class="aDetail">
+      <label><b>Prénom: </b></label> {{user.firstName}}
+    </div>
+    <div class="aDetail">
+      <label><b>Nom: </b></label> {{user.lastName}}
+    </div>
+    <div class="aDetail">
+      <label><b>Date de naissance: </b></label> {{user.birthDate | date}}
+    </div>
+    <div class="aDetail">
+      <label><b>Mail: </b></label> {{user.mail}}
+    </div>
+    <div class="aDetail">
+      <label><b>Sexe: </b></label> {{user.sexe}}
+    </div>
+    <div class="aDetail">
+      <label><b>Description: </b></label> {{user.description}}
+    </div>
+    <div class="aDetail">
+      <label><b>Adresse: </b></label> {{user.wayNumber}} {{user.street}} {{user.zipCode}} {{user.city}}
+    </div>
+    <div class="aDetail">
+      <label><b>Date de création: </b></label> {{ user.dateOfCreate | date }} à {{ user.dateOfCreate | date : "HH"}}H{{ user.dateOfCreate | date : "mm"}}
+    </div>
+  </div>
+  <a routerLink="/list-user">Retourner à la liste des utilisateurs</a><br>
+</div>

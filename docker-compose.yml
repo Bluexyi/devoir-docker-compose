@@ -1,0 +1,51 @@
+version: '3'
+services:
+    front:
+        build: 
+          context: .
+          dockerfile: .docker/front/Dockerfile
+        container_name: espace_membre_front
+        ports:
+          - 80:4200
+        depends_on:
+          - back
+        restart: always
+    
+    back:
+        build: 
+          context: .
+          dockerfile: .docker/back/Dockerfile
+        container_name: espace_membre_back
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/espace_membre_db?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC
+        ports:
+          - 8080:8080
+        depends_on:
+          - mysql
+        restart: always
+
+    mysql:
+        build: .docker/database
+        command: "--default-authentication-plugin=mysql_native_password"
+        container_name: espace_membre_mysql
+        volumes:
+            - .docker/database/data:/var/lib/mysql
+        env_file:
+            - .docker/database/secrets.env
+        expose:
+            - 3306
+        ports: 
+            - 3306:3306
+        restart: always
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin:latest
+        container_name: espace_membre_phpmyadmin
+        environment:
+            PMA_HOST: mysql
+            PMA_PORT: 3306
+        ports:
+            - 8081:80
+        links:
+            - mysql
+        restart: always

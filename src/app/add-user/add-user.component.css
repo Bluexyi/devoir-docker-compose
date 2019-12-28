@@ -1,0 +1,68 @@
+.containerComponent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffebad;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 70%;
+}
+
+form {
+  box-shadow: 9px 9px 13px 0px rgba(0, 0, 0, 0.28);
+  margin-top: 25px;
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.inputForm {
+    display: flex;
+    flex-direction: row;
+    min-width: 700px;
+}
+
+input {
+    max-width: 300px;
+}
+
+.topForm {
+    min-width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.bottomForm {
+    min-width: 300px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.example-form {
+    min-width: 720px;
+    max-width: 60%;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+.example-card {
+    max-width: 400px;
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+a{
+  margin: 10px;
+  text-decoration: none;
+}

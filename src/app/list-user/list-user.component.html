@@ -1,0 +1,30 @@
+<div class="containerComponent">
+  <h2>Liste des utilisateurs</h2>
+  <div class="contTable">
+    <table>
+      <thead>
+        <tr>
+          <th>Pseudo</th>
+          <th>Prenom</th>
+          <th>Nom</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | async">
+          <td>{{user.pseudo}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td>
+            <div class="btns">
+              <button (click)="userDetails(user.id)" class="btn">Details</button>
+              <button (click)="userUpdate(user.id)" class="btn">Modifier</button>
+              <button (click)="deleteUser(user.id)" class="btn btn-delete">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a routerLink="/add-user">Ajouter un utilisateur</a>
+  </div>
+</div>

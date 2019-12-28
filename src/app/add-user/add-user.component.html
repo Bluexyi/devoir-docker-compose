@@ -1,0 +1,147 @@
+<div class="containerComponent">
+    <h2>Ajout d'un nouvel utilisateur</h2>
+
+    <form [formGroup]="addUserForm" (ngSubmit)="onSubmit()" class="example-form"  enctype="multipart/form-data">
+        <div class="inputForm">
+            <div class="topForm">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nom d'utilisateur *" type="text" formControlName="pseudo">
+                    <mat-error *ngIf="addUserForm.controls['pseudo'].hasError('required')">
+                        Le nom d'utilsateur est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['pseudo'].hasError('minlength')">
+                        Le nom d'utilsateur est <strong>trop petit</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['pseudo'].hasError('maxlength')">
+                        Le nom d'utilsateur est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Prénom *" type="text" formControlName="firstName">
+                    <mat-error *ngIf="addUserForm.controls['firstName'].hasError('required')">
+                        Le nom prénom est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['firstName'].hasError('minlength')">
+                        Le nom prénom est <strong>trop petit</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['firstName'].hasError('maxlength')">
+                        Le nom prénom est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nom *" type="text" formControlName="lastName">
+                    <mat-error *ngIf="addUserForm.controls['lastName'].hasError('required')">
+                        Le nom est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['lastName'].hasError('minlength')">
+                        Le nom est <strong>trop petit</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['lastName'].hasError('maxlength')">
+                        Le nom est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                        <input matInput [matDatepicker]="picker" placeholder="Date de naissance *" formControlName="birthDate">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="addUserForm.controls['birthDate'].hasError('required')">
+                            La date de naissance est <strong>obligatoire</strong>
+                        </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="E-mail *" type="text" formControlName="mail">
+                    <mat-error *ngIf="addUserForm.controls['mail'].hasError('required')">
+                        L'adresse mail est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['mail'].hasError('email')">
+                        L'adresse mail n'est <strong>pas conforme</strong>
+                    </mat-error>
+                </mat-form-field>
+        
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Mot de passe *" type="password" formControlName="password">
+                    <mat-error *ngIf="addUserForm.controls['password'].hasError('required')">
+                        Le mot de passe est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['password'].hasError('minlength')">
+                        Le mot de passe est <strong>trop petit</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['password'].hasError('maxlength')">
+                        Le mot de passe est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Sexe *" type="text" formControlName="sexe">
+                        <mat-option *ngFor="let sexe of sexes" [value]="sexe">{{sexe}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addUserForm.controls['sexe'].hasError('required')">
+                        Choisir un sexe est <strong>obligatoire</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <textarea matInput placeholder="Description" type="text" formControlName="description"></textarea>
+                </mat-form-field>
+            </div>
+
+            <div class="bottomForm">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Numéro de voie *" type="text" formControlName="wayNumber">
+                    <mat-error *ngIf="addUserForm.controls['wayNumber'].hasError('required')">
+                        Le numéro de voie est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['wayNumber'].hasError('maxlength')">
+                        Le numéro de voie est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Nom de la voie *" type="text" formControlName="street">
+                    <mat-error *ngIf="addUserForm.controls['street'].hasError('required')">
+                        Le nom de voie est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['street'].hasError('minlength')">
+                        Le nom de voie est <strong>trop petit</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Code postal *" type="text" formControlName="zipCode" (keyup)="getCity(addUserForm.get('zipCode').value)">
+                    <mat-error *ngIf="addUserForm.controls['zipCode'].hasError('required')">
+                        Le code postal est <strong>obligatoire</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['zipCode'].hasError('minlength')">
+                        Le code postal est <strong>trop petit</strong>
+                    </mat-error>
+                    <mat-error *ngIf="addUserForm.controls['zipCode'].hasError('maxlength')">
+                        Le code postal est <strong>trop long</strong>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-select placeholder="Ville *" type="text" formControlName="city">
+                        <mat-option *ngFor="let city of listCity" [value]="city.nom">{{city.nom}}</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="addUserForm.controls['city'].hasError('required') && addUserForm.controls['city'].hasError('minlenght')">
+                        La ville est <strong>obligatoire</strong>
+                    </mat-error>
+                </mat-form-field>
+                <div>
+                    <p>Ajouter une photo de profil</p>
+                   <input type="file" accept="image/*" (change)="onFileSelect($event)"><br><br>
+                </div>
+            </div>
+        </div>
+
+        <p>
+            <mat-checkbox formControlName="condition">Accepter les conditions</mat-checkbox>
+        </p>
+        <button mat-button type="submit" [disabled]="!addUserForm.valid">Valider</button>
+    </form>
+  <a routerLink="/list-user">Retourner à la liste des utilisateurs</a><br>
+</div>

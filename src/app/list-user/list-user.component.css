@@ -1,0 +1,61 @@
+.containerComponent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffebad;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 70%;
+}
+
+.contTable {
+  box-shadow: 9px 9px 13px 0px rgba(0, 0, 0, 0.28);
+  margin-top: 25px;
+  padding: 10px;
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+table {
+  border: 2px solid #6495ed;
+  border-collapse: collapse;
+  width: 50%;
+}
+
+th {
+  border: thin solid #6495ed;
+  width: 50%;
+  padding: 5px;
+  background-color: #adeeff;
+}
+td {
+  border: thin solid #6495ed;
+  width: 50%;
+  padding: 5px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.btns{
+  display: flex;
+  flex-direction: row;
+}
+
+.btn{
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.btn-delete{
+  background-color: red;
+}
+
+a{
+  margin-top: 15px;
+  text-decoration: none;
+}

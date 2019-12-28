@@ -1,0 +1,31 @@
+.containerComponent {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: #ffebad;
+  border: 1px solid white;
+  border-radius: 15px;
+  width: 70%;
+}
+
+.containerDetails {
+  box-shadow: 9px 9px 13px 0px rgba(0, 0, 0, 0.28);
+  margin-top: 25px;
+  padding: 30px;
+  background-color: white;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.aDetail{
+  padding: 5px;
+}
+
+a{
+  margin: 10px;
+  text-decoration: none;
+}
